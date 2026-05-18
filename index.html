@@ -3,27 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MI Elite Car - Estética Automotiva Premium</title>
-    <!-- Google Fonts: Orbitron para títulos futuristas e Inter para leitura limpa -->
+    <title>Jeff Car - Estética Automotiva Premium</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
-    <!-- FontAwesome para ícones premium -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- AOS Animação no Scroll -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
         :root {
-            --bg-dark: #0a0a0a;
-            --bg-card: #121212;
-            --bg-card-hover: #1a1a1a;
+            --bg-dark: #050505;
+            --bg-card: #0d0d0d;
+            --bg-card-hover: #141414;
             --text-light: #ffffff;
-            --text-muted: #a0a0a0;
+            --text-muted: #aaaaaa;
             --gold: #D4AF37;
-            --gold-glow: rgba(212, 175, 55, 0.3);
-            --gold-gradient: linear-gradient(135deg, #b38728 0%, #fbf5b7 50%, #daa520 100%);
-            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --gold-glow: rgba(214, 175, 55, 0.25);
+            --gold-gradient: linear-gradient(135deg, #a37a1e 0%, #fef6c9 50%, #b8860b 100%);
+            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * {
@@ -36,58 +33,74 @@
         body {
             background-color: var(--bg-dark);
             color: var(--text-light);
-            font-family: 'Inter', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
             line-height: 1.6;
         }
 
-        /* Linha decorativa futurista no topo */
+        /* Efeito de grade futurista cibernética no fundo de tela */
         body::before {
             content: '';
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 3px;
+            height: 100%;
+            background: linear-gradient(rgba(214, 175, 55, 0.01) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(214, 175, 55, 0.01) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Linha superior dourada premium */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
             background: var(--gold-gradient);
             z-index: 1000;
         }
 
-        /* Scrollbar customizada */
+        /* Scrollbar Personalizada */
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 6px;
         }
         ::-webkit-scrollbar-track {
             background: var(--bg-dark);
         }
         ::-webkit-scrollbar-thumb {
             background: var(--gold);
-            border-radius: 4px;
+            border-radius: 3px;
         }
 
-        /* Tipografia Global */
         h1, h2, h3, .brand-name {
             font-family: 'Orbitron', sans-serif;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
         }
 
-        /* Container universal */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
+            position: relative;
+            z-index: 1;
         }
 
-        /* Header / Navbar */
+        /* Header / Navegação */
         header {
             position: absolute;
-            top: 0;
+            top: 4px;
             left: 0;
             width: 100%;
             z-index: 100;
-            padding: 1.5rem 0;
-            background: linear-gradient(to bottom, rgba(10,10,10,0.8), transparent);
-            backdrop-filter: blur(5px);
+            padding: 2rem 0;
+            backdrop-filter: blur(10px);
+            background: linear-gradient(to bottom, rgba(5,5,5,0.9), transparent);
+            border-bottom: 1px solid rgba(214, 175, 55, 0.08);
         }
 
         .nav-container {
@@ -99,17 +112,17 @@
         .logo-area {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
         .logo-icon {
             color: var(--gold);
             font-size: 1.8rem;
-            text-shadow: 0 0 10px var(--gold-glow);
+            animation: pulseGlow 3s infinite;
         }
 
         .brand-name {
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             font-weight: 900;
             text-transform: uppercase;
             background: var(--gold-gradient);
@@ -118,15 +131,18 @@
         }
 
         .location-badge {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(214, 175, 55, 0.3);
-            padding: 0.4rem 1rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(214, 175, 55, 0.2);
+            padding: 0.5rem 1.2rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
             color: var(--gold);
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         /* Hero Section */
@@ -136,9 +152,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: radial-gradient(circle at center, rgba(20, 20, 20, 0.4) 0%, rgba(10, 10, 10, 1) 100%), 
-                        url('https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&q=80&w=1920') no-repeat center center/cover;
-            padding-top: 100px;
+            background: radial-gradient(circle at center, rgba(5, 5, 5, 0.3) 0%, rgba(5, 5, 5, 1) 90%), 
+                        url('https://images.unsplash.com/photo-1616788494707-ec28f08d05a1?auto=format&fit=crop&q=80&w=1920') no-repeat center center/cover;
+            padding-top: 120px;
             text-align: center;
         }
 
@@ -148,62 +164,65 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 150px;
+            height: 200px;
             background: linear-gradient(to top, var(--bg-dark), transparent);
+            pointer-events: none;
         }
 
         .hero-content {
-            max-width: 800px;
-            z-index: 2;
+            max-width: 850px;
         }
 
         .slogan {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             text-transform: uppercase;
             color: var(--gold);
-            font-weight: 700;
-            letter-spacing: 3px;
-            margin-bottom: 1rem;
+            font-weight: 600;
+            letter-spacing: 4px;
+            margin-bottom: 1.5rem;
             display: inline-block;
-            border-bottom: 1px solid var(--gold);
-            padding-bottom: 5px;
+            background: rgba(214, 175, 55, 0.05);
+            padding: 0.5rem 1.5rem;
+            border-left: 2px solid var(--gold);
+            border-right: 2px solid var(--gold);
         }
 
         .main-title {
-            font-size: 3.5rem;
+            font-size: 4rem;
             font-weight: 900;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            margin-bottom: 2rem;
             text-transform: uppercase;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+            text-shadow: 0 0 30px rgba(0,0,0,0.9);
         }
 
         .hero-description {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: var(--text-muted);
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
             font-weight: 300;
+            text-align: center;
         }
 
-        /* Botões Premium */
+        /* Botões Estilo Futurista */
         .btn-premium {
             position: relative;
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            background: var(--gold-gradient);
-            color: #000;
+            gap: 15px;
+            background: transparent;
+            color: var(--text-light);
             text-decoration: none;
-            padding: 1rem 2.5rem;
+            padding: 1.2rem 3rem;
             font-family: 'Orbitron', sans-serif;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 0.95rem;
             text-transform: uppercase;
-            border-radius: 4px;
-            border: none;
+            border-radius: 0;
+            border: 1px solid var(--gold);
             cursor: pointer;
             transition: var(--transition);
-            box-shadow: 0 0 20px var(--gold-glow);
+            box-shadow: inset 0 0 0 0 var(--gold);
             overflow: hidden;
         }
 
@@ -214,8 +233,8 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            transition: 0.5s;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+            transition: 0.6s;
         }
 
         .btn-premium:hover::before {
@@ -223,129 +242,59 @@
         }
 
         .btn-premium:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 30px rgba(214, 175, 55, 0.6);
+            color: #000;
+            background: var(--gold-gradient);
+            box-shadow: 0 0 35px var(--gold-glow);
+            border-color: transparent;
+            transform: translateY(-2px);
         }
 
-        /* Seções Gerais */
+        /* Seções Estruturais */
         .section-padding {
-            padding: 8rem 0;
+            padding: 10rem 0;
         }
 
         .section-title-wrapper {
             text-align: center;
-            margin-bottom: 5rem;
+            margin-bottom: 6rem;
         }
 
         .section-tag {
             color: var(--gold);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
             display: block;
         }
 
         .section-title {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             text-transform: uppercase;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 2px;
-            background: var(--gold);
-        }
-
-        /* Grid de Benefícios dos Faróis */
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .benefit-card {
-            background: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            border-bottom: 3px solid transparent;
-            padding: 3rem 2rem;
-            border-radius: 8px;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .benefit-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at top right, rgba(214, 175, 55, 0.05), transparent 60%);
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .benefit-card:hover {
-            transform: translateY(-10px);
-            background: var(--bg-card-hover);
-            border-bottom-color: var(--gold);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .benefit-card:hover::before {
-            opacity: 1;
-        }
-
-        .benefit-icon {
-            font-size: 2.5rem;
-            color: var(--gold);
-            margin-bottom: 1.5rem;
-            display: inline-block;
-            text-shadow: 0 0 10px var(--gold-glow);
-        }
-
-        .benefit-card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-            color: var(--text-light);
-            text-transform: uppercase;
-        }
-
-        .benefit-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            font-weight: 300;
+            font-weight: 700;
         }
 
         /* Galeria Dinâmica Antes e Depois */
         .gallery-section {
-            background: linear-gradient(to bottom, var(--bg-dark), #101010, var(--bg-dark));
+            background: #020202;
+            position: relative;
         }
 
         .gallery-wrapper {
             position: relative;
-            max-width: 900px;
+            max-width: 950px;
             margin: 0 auto;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid rgba(214, 175, 55, 0.2);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            border: 1px solid rgba(214, 175, 55, 0.15);
+            background: #000;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
         }
 
         .slider-container {
             position: relative;
             width: 100%;
-            height: 500px;
+            height: 550px;
+            overflow: hidden;
         }
 
         .slide {
@@ -355,7 +304,7 @@
             width: 100%;
             height: 100%;
             opacity: 0;
-            transition: opacity 0.8s ease-in-out;
+            transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
         }
 
@@ -371,215 +320,141 @@
             position: relative;
             background-size: cover;
             background-position: center;
+            transition: transform 6s ease;
         }
 
-        .side::before {
+        .slide.active .side {
+            transform: scale(1.03);
+        }
+
+        .side::after {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.15);
         }
 
         .side-label {
             position: absolute;
-            bottom: 20px;
-            padding: 0.5rem 1.5rem;
+            bottom: 30px;
+            padding: 0.6rem 1.8rem;
             font-family: 'Orbitron', sans-serif;
             font-weight: 700;
             text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            border-radius: 4px;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
             z-index: 5;
         }
 
         .before-side .side-label {
-            right: 20px;
-            background: rgba(220, 53, 69, 0.85);
-            border: 1px solid #dc3545;
+            right: 30px;
+            background: rgba(15, 15, 15, 0.85);
+            border: 1px solid #ff4444;
+            color: #ff4444;
         }
 
         .after-side .side-label {
-            left: 20px;
-            background: rgba(40, 167, 69, 0.85);
-            border: 1px solid #28a745;
-            box-shadow: 0 0 10px rgba(40,167,69,0.4);
+            left: 30px;
+            background: rgba(15, 15, 15, 0.85);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            box-shadow: 0 0 15px rgba(214, 175, 55, 0.2);
         }
 
-        /* Divisor central do Slider */
+        /* Divisor central futurista */
         .slider-divider {
             position: absolute;
             top: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 4px;
+            width: 2px;
             height: 100%;
-            background: var(--gold);
+            background: var(--gold-gradient);
             z-index: 10;
-            box-shadow: 0 0 10px var(--gold);
+            box-shadow: 0 0 20px var(--gold);
         }
 
         .slider-divider::after {
-            content: 'VS';
+            content: '⬥';
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             background: #000;
-            border: 2px solid var(--gold);
-            border-radius: 50%;
+            border: 1px solid var(--gold);
             color: var(--gold);
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-            font-size: 0.8rem;
+            font-size: 1.2rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 15px var(--gold-glow);
+            box-shadow: 0 0 20px var(--gold-glow);
         }
 
         .category-badge {
             position: absolute;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.85);
-            border: 1px solid var(--gold);
+            top: 35px;
+            left: 35px;
+            background: rgba(0, 0, 0, 0.9);
+            border-bottom: 2px solid var(--gold);
             color: var(--text-light);
-            padding: 0.6rem 2rem;
+            padding: 0.8rem 2.2rem;
             font-family: 'Orbitron', sans-serif;
-            font-size: 1rem;
+            font-size: 0.9rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            border-radius: 4px;
+            letter-spacing: 3px;
             z-index: 11;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
 
-        /* Controles do Carrossel */
+        /* Indicadores lineares inferiores */
         .carousel-dots {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            margin-top: 2rem;
+            gap: 15px;
+            margin-top: 3rem;
         }
 
         .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
+            width: 40px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.1);
             cursor: pointer;
             transition: var(--transition);
         }
 
         .dot.active {
             background: var(--gold);
-            width: 30px;
-            border-radius: 20px;
             box-shadow: 0 0 10px var(--gold);
-        }
-
-        /* Depoimentos / Avaliações Google */
-        .reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-
-        .review-card {
-            background: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            border-radius: 8px;
-            padding: 2rem;
-            position: relative;
-        }
-
-        .review-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 1.2rem;
-        }
-
-        .reviewer-thumb {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 1px solid var(--gold);
-        }
-
-        .reviewer-info h4 {
-            font-size: 1rem;
-            font-weight: 600;
-        }
-
-        .google-verified {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .google-verified i {
-            color: #4285F4;
-        }
-
-        .stars {
-            color: #ffc107;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .review-text {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            font-style: italic;
-        }
-
-        .google-icon-back {
-            position: absolute;
-            top: 2rem;
-            right: 2rem;
-            color: rgba(255, 255, 255, 0.05);
-            font-size: 1.8rem;
-        }
-
-        .center-btn {
-            text-align: center;
         }
 
         /* Footer / Contato */
         footer {
-            background: #050505;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 5rem 0 2rem 0;
+            background: #000000;
+            border-top: 1px solid rgba(214, 175, 55, 0.1);
+            padding: 6rem 0 3rem 0;
         }
 
         .footer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 4rem;
-            margin-bottom: 4rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 5rem;
+            margin-bottom: 5rem;
         }
 
         .footer-info .brand-name {
-            font-size: 1.6rem;
-            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
         }
 
         .footer-info p {
             color: var(--text-muted);
             font-size: 0.95rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
         }
 
         .footer-socials {
@@ -590,42 +465,31 @@
         .social-icon {
             width: 45px;
             height: 45px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
+            border: 1px solid rgba(214, 175, 55, 0.2);
             color: var(--text-light);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             text-decoration: none;
             transition: var(--transition);
         }
 
         .social-icon:hover {
-            border-color: var(--gold);
-            color: var(--gold);
+            background: var(--gold-gradient);
+            color: #000;
+            border-color: transparent;
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px var(--gold-glow);
+            box-shadow: 0 5px 20px var(--gold-glow);
         }
 
         .footer-title {
             font-family: 'Orbitron', sans-serif;
             font-size: 1.1rem;
             text-transform: uppercase;
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 8px;
-        }
-
-        .footer-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 30px;
-            height: 2px;
-            background: var(--gold);
+            margin-bottom: 2rem;
+            letter-spacing: 1px;
+            color: var(--gold);
         }
 
         .contact-list {
@@ -637,67 +501,79 @@
             align-items: flex-start;
             gap: 15px;
             color: var(--text-muted);
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.5rem;
             font-size: 0.95rem;
+            font-weight: 300;
         }
 
         .contact-list i {
             color: var(--gold);
-            margin-top: 4px;
+            font-size: 1.1rem;
+            margin-top: 3px;
         }
 
         .copyright {
             text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding-top: 2rem;
-            color: var(--text-muted);
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            padding-top: 3rem;
+            color: #555555;
             font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
-        /* Widgets Flutuantes */
+        /* Widgets de Ação Fixos / Flutuantes */
         .fixed-widgets {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: 40px;
             display: flex;
             flex-direction: column;
             gap: 15px;
             z-index: 999;
         }
 
+        /* Alinhamento dos botões solicitados: Canto Inferior Esquerdo e Direito */
+        .left-widgets {
+            left: 40px;
+        }
+
+        .right-widgets {
+            right: 40px;
+        }
+
         .widget-btn {
-            width: 60px;
-            height: 60px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             color: #fff;
             text-decoration: none;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
             transition: var(--transition);
             border: none;
             cursor: pointer;
         }
 
         .widget-btn:hover {
-            transform: scale(1.1) translateY(-3px);
+            transform: scale(1.08) translateY(-3px);
         }
 
+        /* Botão do Player de Áudio no canto esquerdo */
         .btn-audio {
-            background: rgba(0, 0, 0, 0.8);
+            background: #000;
             border: 1px solid var(--gold);
             color: var(--gold);
-            box-shadow: 0 4px 15px var(--gold-glow);
         }
 
+        /* Botão do WhatsApp no canto direito */
         .btn-whatsapp {
             background: #25D366;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
         }
 
-        /* Iframe oculto para YouTube */
+        /* Elemento invisível do YouTube Iframe */
         #youtube-player-container {
             position: absolute;
             width: 1px;
@@ -709,52 +585,53 @@
             border: 0;
         }
 
-        /* Responsividade Extrema */
+        /* Breakpoints Responsivos */
         @media (max-width: 768px) {
             .main-title {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
             }
             .section-title {
                 font-size: 1.8rem;
             }
             .slider-container {
-                height: 350px;
+                height: 380px;
             }
             .section-padding {
-                padding: 5rem 0;
-            }
-            .hero {
-                padding-top: 140px;
+                padding: 6rem 0;
             }
             .nav-container {
                 flex-direction: column;
                 gap: 15px;
+                text-align: center;
             }
             .fixed-widgets {
                 bottom: 20px;
+            }
+            .left-widgets {
+                left: 20px;
+            }
+            .right-widgets {
                 right: 20px;
             }
             .widget-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 1.3rem;
+                width: 48px;
+                height: 48px;
+                font-size: 1.2rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Container Oculto do Player do YouTube -->
     <div id="youtube-player-container">
-        <div id="euphonic-player"></div>
+        <div id="audio-engine"></div>
     </div>
 
-    <!-- Header / Navbar -->
     <header>
         <div class="container nav-container">
             <div class="logo-area">
-                <i class="fa-solid solid fa-bolt-lightning logo-icon"></i>
-                <span class="brand-name">MI Elite Car</span>
+                <i class="fa-solid fa-gavel logo-icon"></i>
+                <span class="brand-name">Jeff Car</span>
             </div>
             <div class="location-badge">
                 <i class="fa-solid fa-location-dot"></i> Pomerode, SC
@@ -762,406 +639,276 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
-        <div class="container hero-content" data-aos="zoom-in" data-aos-duration="1200">
+        <div class="container hero-content" data-aos="fade-up" data-aos-duration="1500">
             <span class="slogan">✨ Mais que limpeza, pura perfeição!</span>
-            <h1 class="main-title">Estética Automotiva de Alto Nível</h1>
+            <h1 class="main-title">Estética Automotiva Futurista</h1>
             <p class="hero-description">
-                Na MI Elite Car, a estética automotiva é tratada como arte. Nossos profissionais utilizam as melhores técnicas e produtos para oferecer cuidado premium e garantir que seu carro esteja sempre impecável, por dentro e por fora.
+                Na Jeff Car, a estética automotiva é tratada como arte. Nossos profissionais utilizam as melhores técnicas e produtos para oferecer cuidado premium e garantir que seu carro esteja sempre impecável, por dentro e por fora. Oferecemos soluções completas: Lavagens especiais, polimento técnico, higienização interna e muito mais.
             </p>
             <a href="https://wa.me/5547991921737" target="_blank" class="btn-premium">
-                <i class="fa-brands fa-whatsapp"></i> Agendar Atendimento Elite
+                <i class="fa-brands fa-whatsapp"></i> Iniciar Experiência Elite
             </a>
         </div>
     </section>
 
-    <!-- Seção Benefícios dos Faróis -->
-    <section class="section-padding">
-        <div class="container">
-            <div class="section-title-wrapper" data-aos="fade-up">
-                <span class="section-tag">Segurança e Valorização</span>
-                <h2 class="section-title">Por que Revitalizar os Faróis?</h2>
-            </div>
-
-            <div class="benefits-grid">
-                <!-- Card 1 -->
-                <div class="benefit-card" data-aos="fade-up" data-aos-delay="100">
-                    <i class="fa-solid fa-eye benefit-icon"></i>
-                    <h3>1. Melhora da visibilidade à noite</h3>
-                    <p>O farol fosco ou amarelado diminui muito a intensidade da luz. Revitalizar aumenta a transparência e melhora a iluminação da pista.</p>
-                </div>
-                <!-- Card 2 -->
-                <div class="benefit-card" data-aos="fade-up" data-aos-delay="200">
-                    <i class="fa-solid fa-shield-halved benefit-icon"></i>
-                    <h3>2. Mais segurança na direção</h3>
-                    <p>Com faróis mais claros, o motorista enxerga melhor e também é melhor visto por outros veículos, reduzindo risco de acidentes.</p>
-                </div>
-                <!-- Card 3 -->
-                <div class="benefit-card" data-aos="fade-up" data-aos-delay="300">
-                    <i class="fa-solid fa-chart-line benefit-icon"></i>
-                    <h3>3. Valorização do veículo</h3>
-                    <p>Carro com faróis brilhantes e transparentes aparenta ser mais novo e bem cuidado, o que aumenta o valor de revenda.</p>
-                </div>
-                <!-- Card 4 -->
-                <div class="benefit-card" data-aos="fade-up" data-aos-delay="100">
-                    <i class="fa-solid fa-hand-holding-dollar benefit-icon"></i>
-                    <h3>4. Economia comparada à troca</h3>
-                    <p>Substituir um farol pode custar caro. A revitalização é uma solução muito mais acessível e prolonga a vida útil da peça.</p>
-                </div>
-                <!-- Card 5 -->
-                <div class="benefit-card" data-aos="fade-up" data-aos-delay="200">
-                    <i class="fa-solid fa-sparkles benefit-icon"></i>
-                    <h3>5. Estética renovada</h3>
-                    <p>O carro ganha aspecto de novo, pois faróis opacos e amarelados deixam o veículo com aparência envelhecida.</p>
-                </div>
-                <!-- Card 6 -->
-                <div class="benefit-card" data-aos="fade-up" data-aos-delay="300">
-                    <i class="fa-solid fa-file-shield benefit-icon"></i>
-                    <h3>6. Conformidade com o DETRAN</h3>
-                    <p>Em alguns casos, faróis muito opacos podem reprovar em vistoria veicular, já que comprometem diretamente a segurança.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Seção Galeria Dinâmica (Antes e Depois) -->
     <section class="section-padding gallery-section">
         <div class="container">
             <div class="section-title-wrapper" data-aos="fade-up">
-                <span class="section-tag">Transformação Visível</span>
-                <h2 class="section-title">Galeria Antes e Depois</h2>
+                <span class="section-tag">O Padrão de Detalhamento</span>
+                <h2 class="section-title">Galeria de Metamorfose</h2>
             </div>
 
-            <div class="gallery-wrapper" data-aos="zoom-in">
+            <div class="gallery-wrapper" data-aos="zoom-in-up" data-aos-duration="1200">
                 <div class="slider-container" id="gallerySlider">
                     
-                    <!-- Slide 1: Motor -->
                     <div class="slide active" data-category="Motor">
-                        <div class="side before-side" style="background-image: url('https://images.unsplash.com/photo-1552656967-7a0991a13906?auto=format&fit=crop&q=80&w=800');">
+                        <div class="side before-side" style="background-image: url('https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&q=80&w=1000');">
                             <span class="side-label">Antes</span>
                         </div>
-                        <div class="side after-side" style="background-image: url('https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&q=80&w=800');">
+                        <div class="side after-side" style="background-image: url('https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&q=80&w=1000');">
                             <span class="side-label">Depois</span>
                         </div>
                     </div>
 
-                    <!-- Slide 2: Rodas -->
                     <div class="slide" data-category="Rodas">
-                        <div class="side before-side" style="background-image: url('https://images.unsplash.com/photo-1611245329358-c89e180d657d?auto=format&fit=crop&q=80&w=800');">
+                        <div class="side before-side" style="background-image: url('https://images.unsplash.com/photo-1611245329358-c89e180d657d?auto=format&fit=crop&q=80&w=1000');">
                             <span class="side-label">Antes</span>
                         </div>
-                        <div class="side after-side" style="background-image: url('https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&q=80&w=800');">
+                        <div class="side after-side" style="background-image: url('https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&q=80&w=1000');">
                             <span class="side-label">Depois</span>
                         </div>
                     </div>
 
-                    <!-- Slide 3: Higienização Interna -->
-                    <div class="slide" data-category="Interna">
-                        <div class="side before-side" style="background-image: url('https://images.unsplash.com/photo-1507136566006-cfc505b114fc?auto=format&fit=crop&q=80&w=800');">
+                    <div class="slide" data-category="Higienização Interna">
+                        <div class="side before-side" style="background-image: url('https://images.unsplash.com/photo-1507136566006-cfc505b114fc?auto=format&fit=crop&q=80&w=1000');">
                             <span class="side-label">Antes</span>
                         </div>
-                        <div class="side after-side" style="background-image: url('https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&q=80&w=800');">
+                        <div class="side after-side" style="background-image: url('https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&q=80&w=1000');">
                             <span class="side-label">Depois</span>
                         </div>
                     </div>
 
-                    <!-- Slide 4: Faróis -->
                     <div class="slide" data-category="Faróis">
-                        <div class="side before-side" style="background-image: url('https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&q=80&w=800');">
+                        <div class="side before-side" style="background-image: url('https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&q=80&w=1000');">
                             <span class="side-label">Antes</span>
                         </div>
-                        <div class="side after-side" style="background-image: url('https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&q=80&w=800');">
+                        <div class="side after-side" style="background-image: url('https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&q=80&w=1000');">
                             <span class="side-label">Depois</span>
                         </div>
                     </div>
 
-                    <!-- Slide 5: Porta-malas -->
                     <div class="slide" data-category="Porta-malas">
-                        <div class="side before-side" style="background-image: url('https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&q=80&w=800');">
+                        <div class="side before-side" style="background-image: url('https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&q=80&w=1000');">
                             <span class="side-label">Antes</span>
                         </div>
-                        <div class="side after-side" style="background-image: url('https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&q=80&w=800');">
+                        <div class="side after-side" style="background-image: url('https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&q=80&w=1000');">
                             <span class="side-label">Depois</span>
                         </div>
                     </div>
 
-                    <!-- Elementos Dinâmicos Flutuantes -->
                     <div class="slider-divider"></div>
-                    <div class="category-badge" id="categoryBadge">Motor</div>
+                    <div class="category-badge" id="categoryName">Motor</div>
                 </div>
 
-                <!-- Indicadores (Dots) -->
-                <div class="carousel-dots" id="carouselDots"></div>
+                <div class="carousel-dots" id="sliderIndicators"></div>
             </div>
         </div>
     </section>
 
-    <!-- Seção Avaliações Mockadas Google -->
-    <section class="section-padding">
-        <div class="container">
-            <div class="section-title-wrapper" data-aos="fade-up">
-                <span class="section-tag">Opinião de Quem Confia</span>
-                <h2 class="section-title">Avaliações do Google</h2>
-            </div>
-
-            <div class="reviews-grid">
-                <!-- Avaliação 1 -->
-                <div class="review-card" data-aos="fade-up" data-aos-delay="100">
-                    <i class="fa-brands fa-google google-icon-back"></i>
-                    <div class="review-header">
-                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=100" alt="Cliente" class="reviewer-thumb">
-                        <div class="reviewer-info">
-                            <h4>Ricardo Almeida</h4>
-                            <span class="google-verified"><i class="fa-solid fa-circle-check"></i> Avaliação Verificada</span>
-                        </div>
-                    </div>
-                    <div class="stars">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                    </div>
-                    <p class="review-text">"Levei meu carro para fazer a revitalização dos faróis e uma lavagem detalhada. O resultado foi impressionante, parecia que tinham trocado as peças por novas. Atendimento nota 10 em Pomerode!"</p>
-                </div>
-
-                <!-- Avaliação 2 -->
-                <div class="review-card" data-aos="fade-up" data-aos-delay="200">
-                    <i class="fa-brands fa-google google-icon-back"></i>
-                    <div class="review-header">
-                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100" alt="Cliente" class="reviewer-thumb">
-                        <div class="reviewer-info">
-                            <h4>Mariana Schmidt</h4>
-                            <span class="google-verified"><i class="fa-solid fa-circle-check"></i> Avaliação Verificada</span>
-                        </div>
-                    </div>
-                    <div class="stars">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                    </div>
-                    <p class="review-text">"Cuidado impecável em cada pequeno detalhe. A higienização interna removeu manchas que achei que nunca mais sairiam. O brilho e o perfume do carro na entrega são incomparáveis."</p>
-                </div>
-
-                <!-- Avaliação 3 -->
-                <div class="review-card" data-aos="fade-up" data-aos-delay="300">
-                    <i class="fa-brands fa-google google-icon-back"></i>
-                    <div class="review-header">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100" alt="Cliente" class="reviewer-thumb">
-                        <div class="reviewer-info">
-                            <h4>Fernanda Mueller</h4>
-                            <span class="google-verified"><i class="fa-solid fa-circle-check"></i> Avaliação Verificada</span>
-                        </div>
-                    </div>
-                    <div class="stars">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                    </div>
-                    <p class="review-text">"Estética automotiva de altíssimo nível. Deixei meu veículo para polimento técnico e superou todas as expectativas. O acabamento dourado e o reflexo ficaram perfeitos."</p>
-                </div>
-            </div>
-
-            <div class="center-btn" data-aos="fade-up">
-                <a href="https://www.google.com" target="_blank" class="btn-premium">
-                    <i class="fa-brands fa-google"></i> Ver todas as avaliações no Google
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer / Contato -->
     <footer>
         <div class="container footer-grid">
             <div class="footer-info">
-                <div class="brand-name">MI Elite Car</div>
-                <p>Cuidado profissional em cada detalhe. Oferecemos soluções completas para lavagens especiais, polimento técnico e higienização para que seu veículo atinja a pura perfeição.</p>
+                <div class="brand-name">Jeff Car</div>
+                <p>Estética automotiva de alto padrão sob um olhar cirúrgico e futurista. Tratamos cada veículo com a individualidade que uma verdadeira obra de arte merece.</p>
                 <div class="footer-socials">
                     <a href="https://www.instagram.com/vitryna.com.br/?utm_source=ig_web_button_share_sheet" target="_blank" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://www.facebook.com/521421387730803?ref=PROFILE_EDIT_xav_ig_profile_page_web" target="_blank" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
                 </div>
             </div>
 
             <div>
-                <h3 class="footer-title">Localização & Contato</h3>
+                <h3 class="footer-title">Quartel General</h3>
                 <ul class="contact-list">
                     <li>
                         <i class="fa-solid fa-location-dot"></i>
-                        <span>R. Hermann Weege, 1474 - BOX 7<br>Centro, Pomerode - SC<br>CEP: 89107-000</span>
+                        <span>Rua XV de Novembro, 0000<br>Centro, Pomerode - SC<br>CEP: 89107-000</span>
                     </li>
                     <li>
-                        <i class="fa-solid fa-phone"></i>
+                        <i class="fa-solid fa-mobile-screen-button"></i>
                         <span>(47) 99192-1737</span>
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-clock"></i>
-                        <span>Segunda a Sexta: 08h às 18h<br>Sábado: 08h às 12h</span>
                     </li>
                 </ul>
             </div>
         </div>
         <div class="copyright">
-            &copy; 2026 MI Elite Car - Estética Automotiva. Todos os direitos reservados.
+            &copy; 2026 Jeff Car - Estética Automotiva. Crafted with perfection.
         </div>
     </footer>
 
-    <!-- Widgets Fixos Flutuantes -->
-    <div class="fixed-widgets">
-        <!-- Botão Play/Pause Trilha Sonora -->
-        <button class="widget-btn btn-audio" id="audioToggle" title="Controlar trilha sonora">
-            <i class="fa-solid fa-music"></i>
+    <div class="fixed-widgets left-widgets">
+        <button class="widget-btn btn-audio" id="musicControl" title="Trilha Sonora de Fundo">
+            <i class="fa-solid fa-volume-high"></i>
         </button>
-        <!-- Botão WhatsApp -->
-        <a href="https://wa.me/5547991921737" target="_blank" class="widget-btn btn-whatsapp" title="Fale Conosco no WhatsApp">
+    </div>
+
+    <div class="fixed-widgets right-widgets">
+        <a href="https://wa.me/5547991921737" target="_blank" class="widget-btn btn-whatsapp" title="Fale com nosso Specialist">
             <i class="fa-brands fa-whatsapp"></i>
         </a>
     </div>
 
-    <!-- Scripts: API do YouTube e Animações -->
     <script src="https://www.youtube.com/iframe_api"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Inicialização de Animações Scroll
+        // Inicialização de Animações
         AOS.init({
             once: true,
-            duration: 800
+            duration: 1000
         });
 
-        /* --- Lógica do Carrossel Dinâmico Antes/Depois --- */
+        /* --- Lógica do Carrossel Dinâmico Antes / Depois --- */
         const slides = document.querySelectorAll('.slide');
-        const badge = document.getElementById('categoryBadge');
-        const dotsContainer = document.getElementById('carouselDots');
-        let currentSlide = 0;
-        const slideInterval = 2000; // Troca a cada 2 segundos
+        const currentCategoryText = document.getElementById('categoryName');
+        const dotsWrapper = document.getElementById('sliderIndicators');
+        let activeIndex = 0;
+        const speed = 2000; // 2 segundos
 
-        // Criar os indicadores dinamicamente
-        slides.forEach((_, idx) => {
-            const dot = document.createElement('div');
-            dot.classList.add('dot');
-            if(idx === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => changeSlide(idx));
-            dotsContainer.appendChild(dot);
+        // Geração dos controladores lineares
+        slides.forEach((_, index) => {
+            const linearDot = document.createElement('div');
+            linearDot.classList.add('dot');
+            if(index === 0) linearDot.classList.add('active');
+            linearDot.addEventListener('click', () => navigateToSlide(index));
+            dotsWrapper.appendChild(linearDot);
         });
 
-        const dots = document.querySelectorAll('.dot');
+        const allDots = document.querySelectorAll('.dot');
 
-        function changeSlide(index) {
-            slides[currentSlide].classList.remove('active');
-            dots[currentSlide].classList.remove('active');
+        function navigateToSlide(targetIndex) {
+            slides[activeIndex].classList.remove('active');
+            allDots[activeIndex].classList.remove('active');
             
-            currentSlide = (index + slides.length) % slides.length;
+            activeIndex = (targetIndex + slides.length) % slides.length;
             
-            slides[currentSlide].classList.add('active');
-            dots[currentSlide].classList.add('active');
+            slides[activeIndex].classList.add('active');
+            allDots[activeIndex].classList.add('active');
             
-            // Atualizar o badge de texto do item atual
-            const category = slides[currentSlide].getAttribute('data-category');
-            badge.textContent = category;
+            const categoryTitle = slides[activeIndex].getAttribute('data-category');
+            currentCategoryText.textContent = categoryTitle;
         }
 
-        function nextSlide() {
-            changeSlide(currentSlide + 1);
-        }
+        let loopTimer = setInterval(() => navigateToSlide(activeIndex + 1), speed);
 
-        let autoSlide = setInterval(nextSlide, slideInterval);
-
-        // Pausar o slider ao passar o mouse para melhor UX
-        const galleryWrapper = document.querySelector('.gallery-wrapper');
-        galleryWrapper.addEventListener('mouseenter', () => clearInterval(autoSlide));
-        galleryWrapper.addEventListener('mouseleave', () => autoSlide = setInterval(nextSlide, slideInterval));
+        // Pausa Inteligente em Interação (Hover)
+        const elementWrapper = document.querySelector('.gallery-wrapper');
+        elementWrapper.addEventListener('mouseenter', () => clearInterval(loopTimer));
+        elementWrapper.addEventListener('mouseleave', () => loopTimer = setInterval(() => navigateToSlide(activeIndex + 1), speed));
 
 
-        /* --- Lógica Avançada de Trilha Sonora com API do YouTube --- */
-        let player;
-        let isMutedByUser = false;
-        const audioBtn = document.getElementById('audioToggle');
-        const audioIcon = audioBtn.querySelector('i');
+        /* --- Lógica Avançada de Áudio Aleatório com API do YouTube --- */
+        let playerEngine;
+        let userPausedMusic = false;
+        const toggleBtn = document.getElementById('musicControl');
+        const iconState = toggleBtn.querySelector('i');
 
-        // Esta função é chamada automaticamente quando a API do YouTube está pronta
+        // Função nativa chamada pela API do YouTube
         function onYouTubeIframeAPIReady() {
-            player = new YT.Player('euphonic-player', {
+            // Gerar um ponto de partida verdadeiramente aleatório na trilha (em segundos)
+            // A trilha U5LeM2yjPGk possui aproximadamente 3 horas, escolhemos um range amplo de segundos.
+            const totalDurationSecs = 10000; 
+            const randomStartTime = Math.floor(Math.random() * totalDurationSecs);
+
+            playerEngine = new YT.Player('audio-engine', {
                 height: '0',
                 width: '0',
-                videoId: 'p89k__V2wt0', // ID extraído da URL do usuário
+                videoId: 'U5LeM2yjPGk',
                 playerVars: {
                     'autoplay': 1,
                     'controls': 0,
                     'loop': 1,
-                    'playlist': 'p89k__V2wt0',
-                    'modestbranding': 1,
-                    'rel': 0
+                    'playlist': 'U5LeM2yjPGk',
+                    'start': randomStartTime,
+                    'modestbranding': 1
                 },
                 events: {
-                    'onReady': onPlayerReady,
-                    'onStateChange': onPlayerStateChange
+                    'onReady': preparePlayback,
+                    'onStateChange': monitorState
                 }
             });
         }
 
-        function onPlayerReady(event) {
-            // Define um volume ambiente suave
-            event.target.setVolume(20);
-            
-            // Tenta iniciar o áudio imediatamente
+        function preparePlayback(event) {
+            // Volume moderado para não assustar o usuário
+            event.target.setVolume(25);
             event.target.playVideo();
             
-            // Fallback para navegadores modernos que bloqueiam autoplay sem interação prévia
+            // Fallback obrigatório para políticas agressivas de segurança dos navegadores modernos (clique inicial)
             document.body.addEventListener('click', () => {
-                if (!isMutedByUser && player && player.getPlayerState() !== 1) {
-                    player.playVideo();
-                    updateAudioUI(true);
+                if (!userPausedMusic && playerEngine && playerEngine.getPlayerState() !== 1) {
+                    playerEngine.playVideo();
+                    toggleUI(true);
                 }
             }, { once: true });
         }
 
-        function onPlayerStateChange(event) {
+        function monitorState(event) {
             if (event.data === YT.PlayerState.PLAYING) {
-                updateAudioUI(true);
+                toggleUI(true);
             } else {
-                updateAudioUI(false);
+                toggleUI(false);
             }
         }
 
-        function updateAudioUI(isPlaying) {
+        function toggleUI(isPlaying) {
             if (isPlaying) {
-                audioIcon.className = "fa-solid fa-volume-high";
-                audioBtn.style.animation = "pulseGlow 2s infinite";
+                iconState.className = "fa-solid fa-volume-high";
+                toggleBtn.style.animation = "soundPulse 1.5s infinite alternate";
             } else {
-                audioIcon.className = "fa-solid fa-volume-xmark";
-                audioBtn.style.animation = "none";
+                iconState.className = "fa-solid fa-volume-xmark";
+                toggleBtn.style.animation = "none";
             }
         }
 
-        // Evento de clique no botão flutuante de controle de som
-        audioBtn.addEventListener('click', () => {
-            if (!player) return;
+        // Interação de Clique no Botão de Pause/Play do Canto Esquerdo
+        toggleBtn.addEventListener('click', () => {
+            if (!playerEngine) return;
             
-            const state = player.getPlayerState();
-            if (state === YT.PlayerState.PLAYING) {
-                player.pauseVideo();
-                isMutedByUser = true;
-                updateAudioUI(false);
+            const currentStatus = playerEngine.getPlayerState();
+            if (currentStatus === YT.PlayerState.PLAYING) {
+                playerEngine.pauseVideo();
+                userPausedMusic = true;
+                toggleUI(false);
             } else {
-                player.playVideo();
-                isMutedByUser = false;
-                updateAudioUI(true);
+                playerEngine.playVideo();
+                userPausedMusic = false;
+                toggleUI(true);
             }
         });
 
-        // Visibilidade da página: pausar se o usuário mudar de aba ou minimizar a tela
+        // Evento de Foco: Se sair do site ou fechar a aba, a música pausa imediatamente no dispositivo
         document.addEventListener('visibilitychange', () => {
-            if (!player) return;
+            if (!playerEngine) return;
             
             if (document.hidden) {
-                player.pauseVideo();
+                playerEngine.pauseVideo();
             } else {
-                // Só volta a tocar se o usuário não tiver silenciado manualmente antes
-                if (!isMutedByUser) {
-                    player.playVideo();
+                if (!userPausedMusic) {
+                    playerEngine.playVideo();
                 }
             }
         });
     </script>
 
     <style>
-        /* Animação extra pulsação do botão de áudio ativo */
+        /* Animação Neon de Pulsação do Botão de Áudio Ativo */
+        @keyframes soundPulse {
+            0% { box-shadow: 0 0 0 0 rgba(214, 175, 55, 0.6); transform: scale(1); }
+            100% { box-shadow: 0 0 20px 8px rgba(214, 175, 55, 0); transform: scale(1.05); }
+        }
         @keyframes pulseGlow {
-            0% { box-shadow: 0 0 0 0 rgba(214, 175, 55, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(214, 175, 55, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(214, 175, 55, 0); }
+            0% { transform: scale(1); text-shadow: 0 0 5px rgba(214,175,55,0.2); }
+            50% { transform: scale(1.05); text-shadow: 0 0 15px rgba(214,175,55,0.7); }
+            100% { transform: scale(1); text-shadow: 0 0 5px rgba(214,175,55,0.2); }
         }
     </style>
 </body>
